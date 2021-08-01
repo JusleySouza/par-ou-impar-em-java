@@ -24,7 +24,13 @@ public class Player {
     }
 
     public void setPlayerMove(int playerMove){
-        this.playerMove = playerMove;
+        boolean isValid = validationPlayerMove(playerMove);
+        if(isValid){
+            this.playerMove = playerMove;
+        }
+       else{
+           System.out.println("Coloque um número válido!!");
+       }
     }
 
     public int getPlayerMove(){
@@ -33,6 +39,15 @@ public class Player {
 
     public void victory(){
         victories ++;
+    }
+
+    private boolean validationPlayerMove(int playerMove){
+        if(playerMove > 5 || playerMove < 0){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 }
