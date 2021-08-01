@@ -3,7 +3,7 @@ package player;
 public class Player {
     public String name;
     private int victories;
-    private String choice;
+    private int choice;
     private int playerMove;
 
     public Player(String name){
@@ -15,22 +15,22 @@ public class Player {
         return victories;
     }
 
-    public void setChoice(String choice){
+    public void setChoice(int choice){
         this.choice = choice;
     }
 
     public String getChoice(){
-        return choice;
+        if(this.choice == 1){
+            return "IMPAR";
+        }
+        else{
+            return "PAR";
+        }
     }
 
     public void setPlayerMove(int playerMove){
-        boolean isValid = validationPlayerMove(playerMove);
-        if(isValid){
-            this.playerMove = playerMove;
-        }
-       else{
-           System.out.println("Coloque um número válido!!");
-       }
+        this.playerMove = playerMove;
+    
     }
 
     public int getPlayerMove(){
@@ -45,8 +45,17 @@ public class Player {
         if(playerMove > 5 || playerMove < 0){
             return false;
         }
-        else {
+        else{
             return true;
+        }
+    }
+
+    public boolean validationChoice(int choice){
+        if( choice == 1 || choice == 2){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
